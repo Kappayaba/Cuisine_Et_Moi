@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+
+    <color name="register_up">#ffe6a8</color>
+    <color name="register_down">#ffba6a</color>
+    <color name="register_text">#cc8f55</color>
+    <color name="register_button">#ffb017</color>
+
+    <color name="login_up">#ffc9dc</color>
+    <color name="login_down">#ff5573</color>
+    <color name="login_button">#f0286c</color>
+    <color name="login_text">#ff5c8d</color>
+
+    <color name="main_top_slide">#edc946</color>
+    <color name="top_toolbar">#fec91b</color>
+    <color name="search_color">#faf5e5</color>
+</resources>

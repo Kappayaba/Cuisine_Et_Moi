@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.starscience.cuisinietmoi.cuisineetmoi.v2.ui.recipe.RecipeListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/top_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/top_toolbar"
+            app:menu="@menu/top_toolbar_favorite"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/search"
+                android:drawableTint="@android:color/darker_gray"
+                android:padding="8dp"
+                android:hint="Search"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:textColor="@android:color/darker_gray"
+                android:background="@drawable/search_bar_shape"
+                android:backgroundTint="@color/search_color"
+                android:layout_margin="8dp"
+                android:addTextChangedListener="@{viewModel.searchWatcher}"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:mutableSwipeRefreshListener="@{viewModel.refreshListener}"
+            app:mutableRefreshing="@{viewModel.swipeRefreshing}"
+            app:layout_constraintTop_toBottomOf="@id/top_toolbar"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recipe_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:mutableAdapter="@{viewModel.getRecipeListAdapter()}"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <ProgressBar
+            android:id="@+id/recipe_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:mutableVisibility="@{viewModel.getLoadingVisibility()}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

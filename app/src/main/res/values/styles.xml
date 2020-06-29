@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Register" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">@color/login_up</item>
+        <item name="colorAccent">@color/login_button</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Login" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Theme Color -->
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">@color/register_up</item>
+        <item name="colorAccent">@color/top_toolbar</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Main" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">@color/main_top_slide</item>
+        <item name="colorAccent">@color/top_toolbar</item>
+    </style>
+
+    <style name="Details" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AddRecipe" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">#f1f1f1</item>
+        <item name="colorAccent">@color/top_toolbar</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+</resources>

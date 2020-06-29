@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Cuisine et moi v2.iml" filepath="$PROJECT_DIR$/Cuisine et moi v2.iml" group="Cuisine et moi v2" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Cuisine et moi v2/app" />
+    </modules>
+  </component>
+</project>

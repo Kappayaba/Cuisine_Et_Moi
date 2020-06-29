@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "432023774778",
+    "firebase_url": "https://cuisine-et-moi.firebaseio.com",
+    "project_id": "cuisine-et-moi",
+    "storage_bucket": "cuisine-et-moi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432023774778:android:5ab8341daf31a63541b703",
+        "android_client_info": {
+          "package_name": "com.starscience.cuisine_et_moi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432023774778-d9dqj67fivtn7cgngin6nvmjkou7m65j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.starscience.cuisine_et_moi",
+            "certificate_hash": "ba9bec519402ee8f9a4ad6cf458eab9d3e03dda7"
+          }
+        },
+        {
+          "client_id": "432023774778-1tife0lesme2a90ee0tbgvet6tg13124.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmgcpKpqDHPK393Lc8Ew5tom9VKuI92r4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432023774778-1tife0lesme2a90ee0tbgvet6tg13124.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432023774778:android:42d14c240ccaac0c41b703",
+        "android_client_info": {
+          "package_name": "com.starscience.cuisinietmoi.cuisineetmoi.v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432023774778-3hacuad49p6n335783hig0dt0ffvigb4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.starscience.cuisinietmoi.cuisineetmoi.v2",
+            "certificate_hash": "ba9bec519402ee8f9a4ad6cf458eab9d3e03dda7"
+          }
+        },
+        {
+          "client_id": "432023774778-1tife0lesme2a90ee0tbgvet6tg13124.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmgcpKpqDHPK393Lc8Ew5tom9VKuI92r4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432023774778-1tife0lesme2a90ee0tbgvet6tg13124.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432023774778:android:fd7557817d3eb92941b703",
+        "android_client_info": {
+          "package_name": "com.starscience.cuisinietmoi.v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432023774778-qohs1befnkr9rb1vdfk0rmheds80ibdo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.starscience.cuisinietmoi.v2",
+            "certificate_hash": "ba9bec519402ee8f9a4ad6cf458eab9d3e03dda7"
+          }
+        },
+        {
+          "client_id": "432023774778-1tife0lesme2a90ee0tbgvet6tg13124.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmgcpKpqDHPK393Lc8Ew5tom9VKuI92r4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432023774778-1tife0lesme2a90ee0tbgvet6tg13124.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

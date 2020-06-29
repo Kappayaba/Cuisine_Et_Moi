@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Cuisine et moi v2</string>
+    <string name="profile_description">They called Coney Island, the playground of the world There was no place like it, in the whole world</string>
+    <string name="retry">Retry</string>
+    <string name="recipes_error">An error occured while loading recipe</string>
+</resources>

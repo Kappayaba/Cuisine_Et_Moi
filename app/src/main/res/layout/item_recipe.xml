@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.starscience.cuisinietmoi.cuisineetmoi.v2.ui.recipe.RecipeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/recipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/recipe_name"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:mutableText="@{viewModel.getRecipeName()}"
+                android:textSize="24sp"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/recipe_image_cardview"
+                app:layout_constraintStart_toStartOf="@id/recipe_image_cardview"/>
+
+            <!--TODO : ADD TO FOLDER OPTION -->
+<!--            <Button-->
+<!--                android:id="@+id/add_folder_button"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:text="Add to folder"-->
+<!--                android:textColor="#555555"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:drawableEnd="@drawable/folder_plus"-->
+<!--                android:drawableTint="#555555"-->
+<!--                android:drawablePadding="16dp"-->
+<!--                android:gravity="center"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--                app:layout_constraintTop_toTopOf="@id/recipe_name"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/recipe_name"-->
+<!--                app:layout_constraintRight_toRightOf="parent" />-->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/recipe_image_cardview"
+                android:layout_width="match_parent"
+                android:layout_height="370dp"
+                app:cardCornerRadius="30sp"
+                android:layout_margin="24dp"
+                app:layout_constraintTop_toBottomOf="@id/recipe_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <ImageView
+                    android:id="@+id/recipe_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:mutableImage="@{viewModel.getRecipeImage()}"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/round_corner_layout"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_profil_image"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginVertical="16dp"
+                app:mutableCircleImage="@{viewModel.getRecipeUserProfileImage()}"
+                android:src="@drawable/pp_bckgd"
+                app:layout_constraintTop_toBottomOf="@id/recipe_image_cardview"
+                app:layout_constraintLeft_toLeftOf="@id/recipe_image_cardview"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/recipe_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                app:mutableText="@{viewModel.getRecipeUsername()}"
+                android:textColor="#000000"
+                app:layout_constraintLeft_toRightOf="@id/user_profil_image"
+                app:layout_constraintTop_toTopOf="@id/user_profil_image"
+                app:layout_constraintBottom_toTopOf="@id/recipe_date"
+                app:layout_constraintVertical_chainStyle="packed"/>
+
+            <TextView
+                android:id="@+id/recipe_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                app:mutableText="@{viewModel.getRecipePostDate()}"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@id/user_profil_image"
+                app:layout_constraintTop_toBottomOf="@id/recipe_user"
+                app:layout_constraintBottom_toBottomOf="@id/user_profil_image"/>
+
+            <TextView
+                android:id="@+id/recipe_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:mutableText="@{viewModel.getRecipeLikesCount()}"
+                android:textSize="16sp"
+                android:maxLength="5"
+                app:layout_constraintRight_toRightOf="@id/recipe_image_cardview"
+                app:layout_constraintTop_toTopOf="@id/user_profil_image"
+                app:layout_constraintBottom_toBottomOf="@id/user_profil_image"/>
+
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:id="@+id/recipe_like_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="8dp"
+                app:btn_color="@android:color/darker_gray"
+                app:big_shine_color="@color/login_button"
+                app:small_shine_color="@color/login_button"
+                app:btn_fill_color="@color/login_button"
+                app:click_animation_duration="200"
+                app:shine_count="8"
+                app:siShape="@drawable/heart"
+                mutableChecked="@{viewModel.getIsLiked()}"
+                android:onClick="@{viewModel.setIsLiked}"
+                app:layout_constraintRight_toLeftOf="@+id/recipe_like_count"
+                app:layout_constraintTop_toTopOf="@id/user_profil_image"
+                app:layout_constraintBottom_toBottomOf="@id/user_profil_image"/>
+
+            <TextView
+                android:id="@+id/recipe_comment_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="8dp"
+                android:gravity="center"
+
+                app:mutableText="@{viewModel.getRecipeReplyCount()}"
+                android:textSize="16sp"
+                android:maxLength="5"
+
+                app:layout_constraintRight_toLeftOf="@id/recipe_like_button"
+                app:layout_constraintTop_toTopOf="@id/user_profil_image"
+                app:layout_constraintBottom_toBottomOf="@id/user_profil_image"/>
+
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:id="@+id/recipe_comment_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="8dp"
+
+                app:btn_color="@android:color/darker_gray"
+                app:big_shine_color="@color/top_toolbar"
+                app:small_shine_color="@color/top_toolbar"
+                app:btn_fill_color="@color/top_toolbar"
+                app:click_animation_duration="200"
+                app:shine_count="8"
+                app:siShape="@drawable/message_square"
+
+                app:layout_constraintRight_toLeftOf="@+id/recipe_comment_count"
+                app:layout_constraintTop_toTopOf="@id/user_profil_image"
+                app:layout_constraintBottom_toBottomOf="@id/user_profil_image"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintTop_toBottomOf="@id/recipe"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

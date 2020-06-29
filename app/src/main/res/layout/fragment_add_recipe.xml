@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.starscience.cuisinietmoi.cuisineetmoi.v2.ui.recipe.AddRecipeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="#f1f1f1"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/top_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintTop_toTopOf="parent">
+            <Button
+                android:id="@+id/home_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="home_button"
+                android:text="Home page"
+                android:textColor="#666666"
+                android:textAllCaps="false"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_arrow_back_black_24dp"
+                android:drawablePadding="8dp"
+                android:drawableTint="#666666"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/top_toolbar"
+            app:layout_constraintBottom_toTopOf="@id/publish_button">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recipe_infos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:background="@drawable/round_corner_layout"
+                    android:backgroundTint="#ffffff"
+                    android:elevation="22dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/recipe_ingredient"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:layout_constraintVertical_bias="0">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/recipe_infos_toggle_on"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/recipe_image"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:cardCornerRadius="5dp"
+                            android:layout_margin="8dp"
+                            app:layout_constraintTop_toTopOf="@id/recipe_title"
+                            app:layout_constraintBottom_toBottomOf="@id/recipe_time_on"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toRightOf="@id/recipe_title">
+
+                            <ImageView
+                                android:id="@+id/repaire"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/gyoza"
+                                app:mutableImage="@{viewModel.getRecipeImage}"
+                                android:scaleType="centerCrop"
+                                android:clickable="true"
+                                android:onClick="choose_picture"/>
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#ffffff"
+                                android:src="@drawable/ui"
+                                android:scaleType="center"
+                                android:alpha="0.3"/>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/recipe_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/recipe_time_on"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/recipe_image">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/recipe_title_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:mutableEditText="@{viewModel.getRecipeTitle}"
+                                android:hint="Name"
+                                android:maxLines="1"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/recipe_time_on"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:layout_constraintLeft_toLeftOf="@id/recipe_title"
+                            app:layout_constraintRight_toRightOf="@id/recipe_title"
+                            app:layout_constraintTop_toBottomOf="@id/recipe_title">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/recipe_time_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:mutableEditText="@{viewModel.getRecipeTime}"
+                                android:hint="Recipe Time"
+                                android:maxLines="1"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/recipe_cook_on"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:layout_constraintTop_toBottomOf="@id/recipe_time_on"
+                            app:layout_constraintLeft_toLeftOf="@id/recipe_time_on"
+                            app:layout_constraintRight_toLeftOf="@id/recipe_person_on">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/recipe_cook_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:mutableEditText="@{viewModel.getRecipeCook}"
+                                android:hint="Cook Time"
+                                android:maxLines="1"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/recipe_person_on"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            android:layout_marginStart="16dp"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:layout_constraintTop_toBottomOf="@id/recipe_time_on"
+                            app:layout_constraintLeft_toRightOf="@id/recipe_cook_on"
+                            app:layout_constraintRight_toRightOf="@id/recipe_image">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/recipe_person_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:mutableEditText="@{viewModel.getRecipePerson}"
+                                android:hint="Serves"
+                                android:maxLines="1"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/round_corner_layout"
+                            android:backgroundTint="@color/top_toolbar"
+                            android:text="Finish"
+                            android:textColor="#ffffff"
+                            android:textAllCaps="false"
+                            android:onClick="finishEdit"
+                            app:layout_constraintTop_toBottomOf="@id/recipe_cook_on"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/recipe_infos_toggle_off"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/recipe_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="New Recipe"
+                            app:mutableText="@{viewModel.getRecipeTitle}"
+                            android:textSize="20sp"
+                            android:textColor="#000000"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/recipe_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15 min"
+                            app:mutableText="@{viewModel.getRecipeTime}"
+                            android:textSize="15dp"
+                            android:textColor="#666666"
+                            app:layout_constraintTop_toBottomOf="@id/recipe_name"
+                            app:layout_constraintLeft_toLeftOf="@id/recipe_name"/>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:text="Edit"
+                            android:textColor="#ffffff"
+                            android:textAllCaps="false"
+                            android:background="@drawable/round_corner_layout"
+                            android:backgroundTint="@color/top_toolbar"
+                            android:onClick="editRecipe"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recipe_ingredient"
+                    android:tag="Ingredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="18dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:background="@drawable/round_corner_layout"
+                    android:backgroundTint="#ffffff"
+                    android:elevation="22dp"
+                    app:layout_constraintTop_toBottomOf="@id/recipe_infos"
+                    app:layout_constraintBottom_toTopOf="@id/recipe_instruction">
+
+                    <ToggleButton
+                        android:id="@+id/recipe_ingredient_toggle"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:textOff="Ingredients"
+                        android:textOn="Ingredients"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:textAllCaps="false"
+                        android:gravity="center_vertical"
+                        android:onClick="check_toggle"
+                        android:background="@android:color/transparent"
+                        android:drawableEnd="@drawable/chevron_down"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <Button
+                        android:id="@+id/recipe_add_ingredients_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/round_corner_layout"
+                        android:backgroundTint="@color/top_toolbar"
+                        android:text="Add"
+                        android:textColor="#ffffff"
+                        android:textAllCaps="false"
+                        android:visibility="gone"
+                        android:onClick="add_item"
+                        app:layout_constraintTop_toTopOf="@id/recipe_ingredient_toggle"
+                        app:layout_constraintBottom_toBottomOf="@id/recipe_ingredient_toggle"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <View
+                        android:id="@+id/recipe_ingredient_toggle_shadow"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DDDDDD"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@id/recipe_ingredient_list"
+                        app:layout_constraintTop_toBottomOf="@id/recipe_ingredient_toggle"/>
+
+                    <LinearLayout
+                        android:id="@+id/recipe_ingredient_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/recipe_ingredient_toggle_shadow"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recipe_instruction"
+                    android:tag="Instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:padding="16dp"
+                    android:background="@drawable/round_corner_layout"
+                    android:backgroundTint="#ffffff"
+                    android:elevation="22dp"
+                    app:layout_constraintTop_toBottomOf="@id/recipe_ingredient"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ToggleButton
+                        android:id="@+id/recipe_instruction_toggle"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:textOff="Instructions"
+                        android:textOn="Instructions"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:textAllCaps="false"
+                        android:gravity="center_vertical"
+                        android:onClick="check_toggle"
+                        android:background="@android:color/transparent"
+                        android:drawableEnd="@drawable/chevron_down"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/recipe_add_instruction_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/round_corner_layout"
+                        android:backgroundTint="@color/top_toolbar"
+                        android:text="Add"
+                        android:textColor="#ffffff"
+                        android:textAllCaps="false"
+                        android:visibility="gone"
+                        android:onClick="add_item"
+                        app:layout_constraintTop_toTopOf="@id/recipe_instruction_toggle"
+                        app:layout_constraintBottom_toBottomOf="@id/recipe_instruction_toggle"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <View
+                        android:id="@+id/recipe_instruction_toggle_shadow"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DDDDDD"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@id/recipe_instruction_list"
+                        app:layout_constraintTop_toBottomOf="@id/recipe_instruction_toggle"/>
+
+                    <LinearLayout
+                        android:id="@+id/recipe_instruction_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/recipe_instruction_toggle_shadow"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/publish_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/round_corner_layout"
+            android:backgroundTint="@color/top_toolbar"
+            android:text="Publish"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:textAllCaps="false"
+            android:onClick="@{viewModel.publishRecipe}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55000000"
+            mutableVisibility="@{viewModel.getLoadingImage}">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
